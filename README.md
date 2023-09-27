@@ -5,16 +5,16 @@
 For the CPSC 210 project, I propose a book tracking application. This application would allow
 users to be able to input information about the books they have finished reading, so as to keep 
 track of them. Possible features and functionality could include the book object having a title, 
-author name, genre, number of pages, year published, whether the book was completed, 
+author name, genre, number of pages, month & year read, whether the book was completed, 
 and the user's rating. The application would keep track of all the books the user has read in a list 
 of books that could be accessed as the users collection of books read.
 
-**Who will use this application?**
+***Who will use this application?***
 
 This application would be open for all, though it would be primarily targeted toward individuals who 
 like to read, enough so that they would want to keep track of the books they have read.
 
-**Why is this of interest to me?**
+***Why is this of interest to me?***
 
 The idea behind this project is meaningful to me because I have always been an avid reader. I am thrilled at 
 the possibility of making my own application that even I could use to input the books I have read. While there are
@@ -22,10 +22,12 @@ a few book tracking applications currently out there, I hope to add my own flare
 consider features other applications have not thought of yet.
 
 ## User Stories
-
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
-
-An example of text with **bold** and *italic* fonts.  
+- As a user, I want to be able to add a book to a collection of books and specify the name of the book, the author,
+the number of pages, the genre, the month & year I read it, whether I completed it, and the rating from 1 to 5 with increments
+of 0.25
+- As a user, I want to be able to view the titles of my collection of books read and sort the order from 
+the most recent to the least recently completed, highest rating to the lowest rating
+- As a user, I want to be able to filter my collection of books by genre, author, month or year, and by rating and view
+the resulting titles after filtering
+- As a user, I want to be able to delete a book from the collection of books
+- As a user, I want to be able to select a singular book in the collection and view the details specified
