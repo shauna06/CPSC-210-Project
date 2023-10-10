@@ -19,7 +19,6 @@ public class BookCollection {
         if (!books.contains(book)) {
             this.books.add(book);
         }
-        // changed method to only add a book to a collection once, but now i'm wondering about rereads…
     }
 
     // MODIFIES: this
@@ -98,8 +97,6 @@ public class BookCollection {
         return books.size();
     }
 
-    // might need to edit this for case when the books list is empty, and we cannot get an index
-    // ask about the implementation of this getter method
     public Book getBookAtIndex(int i) {
         if (books.isEmpty()) {
             return null;

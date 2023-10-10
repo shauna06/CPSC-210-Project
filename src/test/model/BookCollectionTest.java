@@ -195,5 +195,4 @@ class BookCollectionTest {
         assertNull(testBookCollection.selectBook(book3));
     }
 
-    // test cases when the list of books is empty and what that should produce as a result
 }

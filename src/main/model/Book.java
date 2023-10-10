@@ -12,7 +12,7 @@ public class Book {
     private double rating;
 
     // REQUIRES: pages > 0, rating between and including 1 and
-    // 5 in which numbers input can only be every 0.5 (ex. 1, 1.5, 2, etc…)
+    // 5 in which numbers input can only be every 0.5 (ex. 1, 1.5, 2)
     // EFFECTS: creates Book object with its parameters
     public Book(String title, String author, int pages, String genre,
                 int yearRead, double rating) {
@@ -32,8 +32,6 @@ public class Book {
         this.rating = newRating;
     }
 
-    // do we need specification for getter methods?
-    // EFFECTS:
     public String getTitle() {
         return title;
     }
