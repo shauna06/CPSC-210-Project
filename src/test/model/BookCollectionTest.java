@@ -127,14 +127,15 @@ class BookCollectionTest {
 
     @Test
     void testSortBooksByYear() {
+        YearComparator comparator = new YearComparator();
         testBookCollection.addBook(book1); // 2022
         testBookCollection.addBook(book2); // 2023
         testBookCollection.addBook(book3); // 2022
         testBookCollection.addBook(book4);  // 2022
-        assertEquals(book2, testBookCollection.sortBooksByYear().get(0));
-        assertEquals(book1, testBookCollection.sortBooksByYear().get(1));
-        assertEquals(book3, testBookCollection.sortBooksByYear().get(2));
-        assertEquals(book4, testBookCollection.sortBooksByYear().get(3));
+        assertEquals(book2, testBookCollection.sortBooksByYear(comparator).get(0));
+        assertEquals(book1, testBookCollection.sortBooksByYear(comparator).get(1));
+        assertEquals(book3, testBookCollection.sortBooksByYear(comparator).get(2));
+        assertEquals(book4, testBookCollection.sortBooksByYear(comparator).get(3));
     }
 
     @Test

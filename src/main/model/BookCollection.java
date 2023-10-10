@@ -42,24 +42,16 @@ public class BookCollection {
     // EFFECTS: sorts book collection from the highest rating to the lowest rating
     // if rating is the same, first book added should appear first in the list
     public List<Book> sortBooksByRating(RatingComparator comparator) {
-//        List<Book> sortedBooks = new ArrayList<>();
-//        Book firstBook = books.get(0);
-//        for (Book book : books) {
-//            if (comparator.compare(firstBook, book) >= 0) {
-//                sortedBooks.add(firstBook);
-//            } else {
-//                sortedBooks.add(book);
-//            }
-//        }
-//        return sortedBooks;
-        return null; //stub
+        Collections.sort(books, comparator.reversed());
+        return books;
     }
 
     // MODIFIES this
     // EFFECTS: sorts book collection from the most recent book read to the least recent
     // if year is the same, first book added should appear first in the list
-    public List<Book> sortBooksByYear() {
-        return null; // stub
+    public List<Book> sortBooksByYear(YearComparator comparator) {
+        Collections.sort(books, comparator.reversed());
+        return books;
     }
 
     // MODIFIES: this
@@ -68,7 +60,7 @@ public class BookCollection {
     public List<String> filterBooksByGenre(String genre) {
         List<String> filteredGenre = new ArrayList<>();
         for (Book book : books) {
-            if (book.getGenre() == genre) {
+            if (book.getGenre().equals(genre)) {
                 filteredGenre.add(book.getTitle());
             }
         }
@@ -81,7 +73,7 @@ public class BookCollection {
     public List<String> filterBooksByAuthor(String author) {
         List<String> filteredAuthor = new ArrayList<>();
         for (Book book : books) {
-            if (book.getAuthor() == author) {
+            if (book.getAuthor().equals(author)) {
                 filteredAuthor.add(book.getTitle());
             }
         }
@@ -89,7 +81,6 @@ public class BookCollection {
     }
 
 
-    // MODIFIES: NOT SURE WHAT THIS WOULD MODIFY ( ASK!)
     // EFFECTS: returns the book a user is looking for if it is in their book collection,
     // otherwise returns null
     public Book selectBook(Book book) {
@@ -117,6 +108,7 @@ public class BookCollection {
         }
     }
 
+    // EFFECTS: checks to see if the list of books in the collection contains a specific book
     public boolean containsBook(Book book) {
         return this.books.contains(book);
     }
