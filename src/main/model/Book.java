@@ -4,9 +4,9 @@ package model;
 // genre, year book was read, and the user's rating
 
 public class Book {
-    private String title;
-    private String author;
-    private int pages;
+    private final String title;
+    private final String author;
+    private final int pages;
     private String genre;
     private int yearRead;
     private double rating;

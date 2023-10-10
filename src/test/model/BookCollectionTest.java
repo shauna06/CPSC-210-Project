@@ -28,6 +28,7 @@ class BookCollectionTest {
     @Test
     void testConstructor() {
         assertEquals(0, testBookCollection.getTotalNumberOfBooks());
+        assertNull(testBookCollection.getBookAtIndex(0));
     }
 
     @Test
