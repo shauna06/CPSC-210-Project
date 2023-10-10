@@ -25,12 +25,12 @@ consider features other applications have not thought of yet.
 
 ## User Stories
 - As a user, I want to be able to add a book to a collection of books and specify the name of the book, the author,
-the number of pages, the genre, the month & year I read it, whether I completed it, and the rating from 1 to 5 with 
+the number of pages, the genre, the year I read it,  and the rating from 1 to 5 with 
 increments of 0.25
 - As a user, I want to be able to view the titles of my collection of books read 
 - As a user, I want to be able to sort the order of books from the most recent to the least recent or 
-highest rating to the lowest rating and vice versa
-- As a user, I want to be able to filter my collection of books by genre, author, month or year, or by rating and view
+highest rating to the lowest rating
+- As a user, I want to be able to filter my collection of books by genre or author and view
 the resulting titles after filtering
 - As a user, I want to be able to delete a book from the collection of books
 - As a user, I want to be able to select a singular book in the collection and view the details specified
