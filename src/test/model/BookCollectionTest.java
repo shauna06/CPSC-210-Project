@@ -66,8 +66,6 @@ class BookCollectionTest {
         assertEquals(1, testBookCollection.getTotalNumberOfBooks());
         boolean success = testBookCollection.containsBook(book2);
         assertFalse(success);
-        // how would I test to see if the book isn't there. not a list so can't use contains
-        // made a containsBook method in the book collection
     }
 
     @Test
@@ -81,8 +79,6 @@ class BookCollectionTest {
         assertFalse(success);
         boolean success2 = testBookCollection.containsBook(book1);
         assertFalse(success2);
-        // method should not allow you to delete a book that's already been deleted.
-        // should check that case in another test
     }
 
     @Test
@@ -120,10 +116,10 @@ class BookCollectionTest {
         testBookCollection.addBook(book2); // 4.0
         testBookCollection.addBook(book3); // 5.0
         testBookCollection.addBook(book4);  // 4.5
-        assertEquals(book3, testBookCollection.sortBooksByRating(comparator).get(0));
-        assertEquals(book1, testBookCollection.sortBooksByRating(comparator).get(1));
-        assertEquals(book4, testBookCollection.sortBooksByRating(comparator).get(2));
-        assertEquals(book2, testBookCollection.sortBooksByRating(comparator).get(3));
+        assertEquals("Legendborn", testBookCollection.sortBooksByRating(comparator).get(0));
+        assertEquals("Blood Like Magic", testBookCollection.sortBooksByRating(comparator).get(1));
+        assertEquals("Bloodmarked", testBookCollection.sortBooksByRating(comparator).get(2));
+        assertEquals("Love and Other Words", testBookCollection.sortBooksByRating(comparator).get(3));
     }
 
     @Test
@@ -133,10 +129,10 @@ class BookCollectionTest {
         testBookCollection.addBook(book2); // 2023
         testBookCollection.addBook(book3); // 2022
         testBookCollection.addBook(book4);  // 2022
-        assertEquals(book2, testBookCollection.sortBooksByYear(comparator).get(0));
-        assertEquals(book1, testBookCollection.sortBooksByYear(comparator).get(1));
-        assertEquals(book3, testBookCollection.sortBooksByYear(comparator).get(2));
-        assertEquals(book4, testBookCollection.sortBooksByYear(comparator).get(3));
+        assertEquals("Love and Other Words", testBookCollection.sortBooksByYear(comparator).get(0));
+        assertEquals("Blood Like Magic", testBookCollection.sortBooksByYear(comparator).get(1));
+        assertEquals("Legendborn", testBookCollection.sortBooksByYear(comparator).get(2));
+        assertEquals("Bloodmarked", testBookCollection.sortBooksByYear(comparator).get(3));
     }
 
     @Test

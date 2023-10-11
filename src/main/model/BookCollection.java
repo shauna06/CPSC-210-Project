@@ -38,19 +38,29 @@ public class BookCollection {
     }
 
     // MODIFIES: this
-    // EFFECTS: sorts book collection from the highest rating to the lowest rating
+    // EFFECTS: sorts book collection from the highest rating to the lowest rating and returns the titles
     // if rating is the same, first book added should appear first in the list
-    public List<Book> sortBooksByRating(RatingComparator comparator) {
+    public List<String> sortBooksByRating(RatingComparator comparator) {
         Collections.sort(books, comparator.reversed());
-        return books;
+
+        List<String> sortedBooksRating = new ArrayList<>();
+        for (Book book : books) {
+            sortedBooksRating.add(book.getTitle());
+        }
+        return sortedBooksRating;
     }
 
     // MODIFIES this
-    // EFFECTS: sorts book collection from the most recent book read to the least recent
+    // EFFECTS: sorts book collection from the most recent book read to the least recent and returns the titles
     // if year is the same, first book added should appear first in the list
-    public List<Book> sortBooksByYear(YearComparator comparator) {
+    public List<String> sortBooksByYear(YearComparator comparator) {
         Collections.sort(books, comparator.reversed());
-        return books;
+
+        List<String> sortedBooks = new ArrayList<>();
+        for (Book book : books) {
+            sortedBooks.add(book.getTitle());
+        }
+        return sortedBooks;
     }
 
     // MODIFIES: this
@@ -96,6 +106,7 @@ public class BookCollection {
     public int getTotalNumberOfBooks() {
         return books.size();
     }
+
 
     public Book getBookAtIndex(int i) {
         if (books.isEmpty()) {
