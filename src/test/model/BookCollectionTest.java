@@ -62,7 +62,7 @@ class BookCollectionTest {
     void testDeleteOneBook() {
         testBookCollection.addBook(book1);
         testBookCollection.addBook(book2);
-        testBookCollection.deleteBook(book2);
+        testBookCollection.deleteBook("Love and Other Words");
         assertEquals(1, testBookCollection.getTotalNumberOfBooks());
         boolean success = testBookCollection.containsBook(book2);
         assertFalse(success);
@@ -72,8 +72,8 @@ class BookCollectionTest {
     void testDeleteMultipleBooks() {
         testBookCollection.addBook(book1);
         testBookCollection.addBook(book2);
-        testBookCollection.deleteBook(book2);
-        testBookCollection.deleteBook(book1);
+        testBookCollection.deleteBook("Love and Other Words");
+        testBookCollection.deleteBook("Blood Like Magic");
         assertEquals(0, testBookCollection.getTotalNumberOfBooks());
         boolean success = testBookCollection.containsBook(book2);
         assertFalse(success);
@@ -84,8 +84,8 @@ class BookCollectionTest {
     @Test
     void testDeleteBookBookAlreadyDeleted() {
         testBookCollection.addBook(book1);
-        testBookCollection.deleteBook(book1);
-        testBookCollection.deleteBook(book1);
+        testBookCollection.deleteBook("Blood Like Magic");
+        testBookCollection.deleteBook("Blood Like Magic");
         assertEquals(0, testBookCollection.getTotalNumberOfBooks());
         boolean success = testBookCollection.containsBook(book1);
         assertFalse(success);
@@ -174,7 +174,7 @@ class BookCollectionTest {
         testBookCollection.addBook(book2);
         testBookCollection.addBook(book3);
         testBookCollection.addBook(book4);
-        assertEquals(book3, testBookCollection.selectBook(book3));
+        assertEquals(book3, testBookCollection.selectBook("Legendborn"));
     }
 
     @Test
@@ -183,13 +183,13 @@ class BookCollectionTest {
         testBookCollection.addBook(book2);
         testBookCollection.addBook(book3);
         testBookCollection.addBook(book4);
-        assertEquals(book4, testBookCollection.selectBook(book4));
-        assertEquals(book1, testBookCollection.selectBook(book1));
+        assertEquals(book4, testBookCollection.selectBook("Bloodmarked"));
+        assertEquals(book1, testBookCollection.selectBook("Blood Like Magic"));
     }
 
     @Test
     void testSelectBookNotInCollection () {
-        assertNull(testBookCollection.selectBook(book3));
+        assertNull(testBookCollection.selectBook("Legendborn"));
     }
 
 }

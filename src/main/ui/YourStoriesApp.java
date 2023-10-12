@@ -5,7 +5,6 @@ import model.BookCollection;
 import model.RatingComparator;
 import model.YearComparator;
 
-import java.util.List;
 import java.util.Scanner;
 
 // Book Application
@@ -13,8 +12,9 @@ public class YourStoriesApp {
     private BookCollection bookCollection;
     private Scanner input;
 
-    // runs the YourStories application
+    // runs the YourStories application and instantiates the user's book collection
     public YourStoriesApp() {
+        bookCollection = new BookCollection();
         runYourStories();
     }
 
@@ -47,15 +47,15 @@ public class YourStoriesApp {
     private void processCommand(String command) {
         if (command.equals("start")) {
             createBook();
+            nextChoices();
         } else {
             System.out.println("Invalid command. Please try again.");
         }
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes book collection and scanner
+    // EFFECTS: initializes the scanner
     private void initialize() {
-        bookCollection = new BookCollection();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
@@ -90,7 +90,6 @@ public class YourStoriesApp {
         System.out.println("Adding the book to your collection...");
         bookCollection.addBook(book);
         System.out.println("Successfully added book!");
-        nextChoices();
 
     }
 
@@ -105,13 +104,13 @@ public class YourStoriesApp {
             newCommand = input.next();
             newCommand = newCommand.toLowerCase();
 
-            if (newCommand.equals("q")) {
+            if (newCommand.equals("back")) {
                 continueOn = false;
             } else {
                 processNewCommand(newCommand);
             }
         }
-        System.out.println("\nHappy reading!");
+
     }
 
     private void processNewCommand(String newCommand) {
@@ -125,6 +124,8 @@ public class YourStoriesApp {
             sortCollection();
         } else if (newCommand.equals("filter")) {
             filterCollection();
+        } else if (newCommand.equals("select")) {
+            selectBookFromCollection();
         } else {
             System.out.println("Invalid command. Please try again.");
         }
@@ -140,14 +141,22 @@ public class YourStoriesApp {
         System.out.println("\tlist -> list the books in your collection");
         System.out.println("\tsort -> sort your collection");
         System.out.println("\tfilter -> filter your collection");
-        System.out.println("\tq -> quit the application");
-        // add select option here for the select user story
+        System.out.println("\tselect -> select a book from your collection");
+        System.out.println("\tback -> to go back to the start of the application");
     }
 
     // MODIFIES: this
     // EFFECTS: allows user to delete a book from their collection
     private void deleteFromCollection() {
-        // stub
+        System.out.println("Type the title of the book you want to delete.");
+        String deleteCommand = input.next();
+        System.out.println("Deleting book from collection...");
+        if (bookCollection.listAllBooks().contains(deleteCommand)) {
+            bookCollection.deleteBook(deleteCommand);
+            System.out.println("Success!");
+        } else {
+            System.out.println("We're sorry. The book you want to delete seems to not be in the collection.");
+        }
     }
 
     // MODIFIES: this
@@ -156,7 +165,6 @@ public class YourStoriesApp {
         System.out.println("Printing all titles in your collection...");
         System.out.println(bookCollection.listAllBooks());
         System.out.println("Success!");
-        backToMenu();
     }
 
     // MODIFIES: this
@@ -170,11 +178,9 @@ public class YourStoriesApp {
         if (sortCommand.equals("r")) {
             System.out.println(bookCollection.sortBooksByRating(new RatingComparator()));
             System.out.println("Success!");
-            backToMenu();
         } else if (sortCommand.equals("y")) {
             System.out.println(bookCollection.sortBooksByYear(new YearComparator()));
             System.out.println("Success!");
-            backToMenu();
         } else {
             System.out.println("Invalid command. Please try again.");
             sortCollection();
@@ -184,25 +190,35 @@ public class YourStoriesApp {
     // MODIFIES: this
     // EFFECTS: allows user to filter their collection by either genre or by author
     private void filterCollection() {
-        System.out.println("Press g to filter by genre or a to filter by year");
+        System.out.println("Press g to filter by genre or a to filter by author");
         String filterCommand = null;
         filterCommand = input.next();
         filterCommand = filterCommand.toLowerCase();
-    }
-
-    // EFFECTS: prompts the user to go back to the menu
-    // GETTING ERROR IN WHICH IT GOES BACK TO THE MAIN MENU ANYWAY
-    private void backToMenu() {
-        System.out.println("Press b to go back to the menu.");
-        String returnBackCommand = null;
-        returnBackCommand = input.next();
-        returnBackCommand = returnBackCommand.toLowerCase();
-
-        if (returnBackCommand.equals("b")) {
-            nextChoices();
+        if (filterCommand.equals("g")) {
+            System.out.println("Type the genre you want to filter for.");
+            String genreCommand = input.next();
+            System.out.println(bookCollection.filterBooksByGenre(genreCommand));
+        } else if (filterCommand.equals("a")) {
+            System.out.println("Type the author you want to filter for.");
+            String authorCommand = input.next();
+            System.out.println(bookCollection.filterBooksByAuthor(authorCommand));
         } else {
             System.out.println("Invalid command. Please try again.");
-            backToMenu();
+            filterCollection();
+        }
+    }
+
+    // EFFECTS: allows user to select a book from their collection and view its contents
+    private void selectBookFromCollection() {
+        System.out.println("Type the title of the book you want to select.");
+        String selectCommand = input.next();
+        System.out.println("Selecting book...");
+
+        if (bookCollection.selectBook(selectCommand) == null) {
+            System.out.println("We're sorry. The title you've input seems to not be in the collection.");
+        } else {
+            System.out.println(bookCollection.selectBook(selectCommand).toString());
+            System.out.println("Success!");
         }
     }
 

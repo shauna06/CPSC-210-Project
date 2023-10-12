@@ -55,4 +55,16 @@ public class Book {
     public double getRating() {
         return rating;
     }
+
+    // MODIFIES: this
+    // EFFECTS: turns a Book object into a string
+    @Override
+    public String toString() {
+        String pagesAsString = Integer.toString(pages);
+        String yearReadAsString = Integer.toString(yearRead);
+        String ratingAsString = Double.toString(rating);
+        return "Book [Title = " + title + ", Author = " + author + ", Page Count = " + pagesAsString
+                + ", Genre = " + genre + ", Year Read = " + yearReadAsString + ", Rating = " + ratingAsString + "]";
+    }
+
 }

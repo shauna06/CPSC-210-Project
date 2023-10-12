@@ -22,9 +22,13 @@ public class BookCollection {
     }
 
     // MODIFIES: this
-    // EFFECTS: deletes a specific book defined by book parameter from the book collection
-    public void deleteBook(Book bookToDelete) {
-        books.remove(bookToDelete);
+    // EFFECTS: deletes a specific book from the book collection
+    public void deleteBook(String title) {
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getTitle().equals(title)) {
+                books.remove(books.get(i));
+            }
+        }
     }
 
     // MODIFIES: this
@@ -92,12 +96,13 @@ public class BookCollection {
 
     // EFFECTS: returns the book a user is looking for if it is in their book collection,
     // otherwise returns null
-    public Book selectBook(Book book) {
-        if (books.contains(book)) {
-            return book;
-        } else {
-            return null;
+    public Book selectBook(String title) {
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getTitle().equals(title)) {
+                return books.get(i);
+            }
         }
+        return null;
     }
 
 
