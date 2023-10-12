@@ -29,4 +29,11 @@ public class BookTest {
         testBook.changeRating(4);
         assertEquals(4, testBook.getRating());
     }
+
+    @Test
+    void testToString() {
+        assertEquals("Book [Title = " + "Blood Like Magic" + ", Author = " + "Liselle Sambury"
+                        + ", Page Count = " + "484" + ", Genre = " + "YA Fantasy" + ", Year Read = " + "2022"
+                        + ", Rating = " + "4.5" + "]", testBook.toString());
+    }
 }
