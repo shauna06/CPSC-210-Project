@@ -12,7 +12,7 @@ public class Book {
     private double rating;
 
     // REQUIRES: pages > 0, rating between and including 1 and
-    // 5 in which numbers input can only be every 0.5 (ex. 1, 1.5, 2)
+    // 5 in which numbers input can only be every 0.25 (ex. 1, 1.25, 1.5, 1.75)
     // EFFECTS: creates Book object with its parameters
     public Book(String title, String author, int pages, String genre,
                 int yearRead, double rating) {
@@ -25,7 +25,7 @@ public class Book {
     }
 
     // REQUIRES: rating input must be between and including
-    // 1 and 5 in which numbers can only be every 0.5
+    // 1 and 5 in which numbers can only be every 0.25
     // MODIFIES: this
     // EFFECTS: changes the initial rating of the book to another number
     public void changeRating(int newRating) {

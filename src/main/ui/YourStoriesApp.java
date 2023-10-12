@@ -220,6 +220,7 @@ public class YourStoriesApp {
             System.out.println(bookCollection.selectBook(selectCommand).toString());
             System.out.println("Success!");
         }
+        // add portion to change the rating of
     }
 
 }
