@@ -28,7 +28,7 @@ public class Book {
     // 1 and 5 in which numbers can only be every 0.25
     // MODIFIES: this
     // EFFECTS: changes the initial rating of the book to another number
-    public void changeRating(int newRating) {
+    public void changeRating(double newRating) {
         this.rating = newRating;
     }
 

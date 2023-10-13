@@ -114,7 +114,7 @@ public class YourStoriesApp {
     }
 
     private void processNewCommand(String newCommand) {
-        if (newCommand.equals("add"))  {
+        if (newCommand.equals("add")) {
             createBook();
         } else if (newCommand.equals("delete")) {
             deleteFromCollection();
@@ -208,7 +208,8 @@ public class YourStoriesApp {
         }
     }
 
-    // EFFECTS: allows user to select a book from their collection and view its contents
+    // EFFECTS: allows user to select a book from their collection and view its contents,
+    // and change the rating of their book if they choose to do so
     private void selectBookFromCollection() {
         System.out.println("Type the title of the book you want to select.");
         String selectCommand = input.next();
@@ -219,8 +220,19 @@ public class YourStoriesApp {
         } else {
             System.out.println(bookCollection.selectBook(selectCommand).toString());
             System.out.println("Success!");
+            System.out.println("Type c if you would like to change the rating of the book."
+                    + " Click any another key to exit.");
+            String changeRatingCommand = input.next();
+            changeRatingCommand = changeRatingCommand.toLowerCase();
+            if (changeRatingCommand.equals("c")) {
+                System.out.println("Type the new rating.");
+                double ratingCommand = input.nextDouble();
+                System.out.println("Changing rating...");
+                bookCollection.selectBook(selectCommand).changeRating(ratingCommand);
+                System.out.println(bookCollection.selectBook(selectCommand).toString());
+                System.out.println("Success!");
+            }
         }
-        // add portion to change the rating of
     }
 
 }

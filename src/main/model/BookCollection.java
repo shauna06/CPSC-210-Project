@@ -35,7 +35,7 @@ public class BookCollection {
     // EFFECTS: shows the titles of all the books currently in the book collection
     public List<String> listAllBooks() {
         List<String> titles = new ArrayList<>();
-        for (Book book: books) {
+        for (Book book : books) {
             titles.add(book.getTitle());
         }
         return titles;
