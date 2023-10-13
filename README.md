@@ -6,9 +6,8 @@
 For the CPSC 210 project, I propose a book tracking application. This application would allow
 users to input information about the books they have been reading to keep 
 track of them. Possible features and functionality could include the book object having a title, 
-author name, genre, number of pages, month & year read, whether the book was completed, 
-and the user's rating. The application would keep track of all the books the user has input in a list 
-of books that could be accessed as the user's collection.
+author name, genre, number of pages, year read, and the user's rating. The application would keep track of all the books 
+the user has input in a list of books that could be accessed as the user's collection.
 
 ***Who will use this application?***
 
@@ -18,10 +17,9 @@ like to read, particularly enough so that they would want to keep track of the b
 ***Why is this of interest to me?***
 
 The idea behind this project is meaningful to me because I have always been an avid reader from the moment I learned 
-how to read. I am thrilled at 
-the possibility of making my own application that even I could use to input the books I have been reading. While there are
-a few book tracking applications currently out there, I hope to add my own flare to this personal project and potentially
-consider features other applications have not thought of yet.
+how to read. I am thrilled at the possibility of making my own application that even I could use to input the books 
+I have been reading. While there are a few book tracking applications currently out there, I hope to add my own flare 
+to this personal project and potentially consider features other applications have not thought of yet.
 
 ## User Stories
 - As a user, I want to be able to add a book to a collection of books and specify the name of the book, the author,
