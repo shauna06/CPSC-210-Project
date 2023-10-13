@@ -113,6 +113,7 @@ public class YourStoriesApp {
 
     }
 
+    // EFFECTS: processes more user commands
     private void processNewCommand(String newCommand) {
         if (newCommand.equals("add")) {
             createBook();
