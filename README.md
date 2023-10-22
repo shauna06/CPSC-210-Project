@@ -32,3 +32,5 @@ highest rating to the lowest rating
 the resulting titles after filtering
 - As a user, I want to be able to delete a book from the collection of books
 - As a user, I want to be able to select a singular book in the collection and view the details specified
+- As a user, I want to be provided the option to save my book collection if I choose to
+- As a user, I want to be able to reload my book collection when I reopen the application
