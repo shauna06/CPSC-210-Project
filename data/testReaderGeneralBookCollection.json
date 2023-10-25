@@ -1,0 +1,45 @@
+{
+  "books": [
+    {
+      "pages": 484,
+      "year read": 2022,
+      "author": "Liselle Sambury",
+      "genre": "YA Fantasy",
+      "rating": 4.5,
+      "title": "Blood Like Magic"
+    },
+    {
+      "pages": 501,
+      "year read": 2022,
+      "author": "Tracy Deonn",
+      "genre": "YA Fantasy",
+      "rating": 5,
+      "title": "Legendborn"
+    },
+    {
+      "pages": 372,
+      "year read": 2023,
+      "author": "Christina Lauren",
+      "genre": "Romance",
+      "rating": 4,
+      "title": "Love and Other Words"
+    },
+    {
+      "pages": 561,
+      "year read": 2022,
+      "author": "Tracy Deonn",
+      "genre": "YA Fantasy",
+      "rating": 4.5,
+      "title": "Bloodmarked"
+    },
+    {
+      "pages": 350,
+      "year read": 2023,
+      "author": "Talia Hibbert",
+      "genre": "YA Romance",
+      "rating": 3.5,
+      "title": "Highly Suspicious and Unfairly Cute"
+    }
+  ],
+  "name": "Shauna's Book Collection"
+}

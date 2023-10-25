@@ -1,0 +1,37 @@
+{
+    "books": [
+        {
+            "pages": 360,
+            "year read": 2023,
+            "author": "Leigh Bardugo",
+            "genre": "YA Fantasy",
+            "rating": 3.5,
+            "title": "Shadow and Bone"
+        },
+        {
+            "pages": 501,
+            "year read": 2022,
+            "author": "Tracy Deonn",
+            "genre": "YA Fantasy",
+            "rating": 5,
+            "title": "Legendborn"
+        },
+        {
+            "pages": 498,
+            "year read": 2020,
+            "author": "Shauna Ndoping",
+            "genre": "Fiction",
+            "rating": 4,
+            "title": "Mike's Adventures"
+        },
+        {
+            "pages": 600,
+            "year read": 2016,
+            "author": "Shauna Ndoping",
+            "genre": "Autobiography",
+            "rating": 5,
+            "title": "Shauna's Memoir"
+        }
+    ],
+    "name": "Shauna's Book Collection"
+}

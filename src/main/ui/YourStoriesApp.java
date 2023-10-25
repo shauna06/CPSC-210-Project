@@ -4,17 +4,28 @@ import model.Book;
 import model.BookCollection;
 import model.RatingComparator;
 import model.YearComparator;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+
 // Book Application
+// Code influenced by the TellerApp: https://github.students.cs.ubc.ca/CPSC210/TellerApp
 public class YourStoriesApp {
+    private static final String JSON_STORE = "./data/workroom.json";
     private BookCollection bookCollection;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // runs the YourStories application and instantiates the user's book collection
-    public YourStoriesApp() {
-        bookCollection = new BookCollection();
+    public YourStoriesApp() throws FileNotFoundException {
+        bookCollection = new BookCollection("Shauna's Book Collection");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runYourStories();
     }
 
@@ -48,6 +59,9 @@ public class YourStoriesApp {
         if (command.equals("start")) {
             createBook();
             nextChoices();
+        } else if (command.equals("load")) {
+            loadBookCollection();
+            nextChoices();
         } else {
             System.out.println("Invalid command. Please try again.");
         }
@@ -64,6 +78,7 @@ public class YourStoriesApp {
     private void displayMenu() {
         System.out.println("Welcome to YourStories! An application to store all of the books you've read.");
         System.out.println("Type start and click enter/return to input a book");
+        System.out.println("Type load and click enter/return to reload a saved Book Collection");
         System.out.println("Or type quit and click enter/return to quit the application");
     }
 
@@ -82,7 +97,7 @@ public class YourStoriesApp {
         String genre = input.next();
         System.out.println("Enter the year you read the book");
         int yearRead = input.nextInt();
-        System.out.println("Enter the rating");
+        System.out.println("Enter the rating (between 1 and 5 in increments of .25)");
         double rating = input.nextDouble();
 
         Book book = new Book(title, author, pages, genre, yearRead, rating);
@@ -128,6 +143,8 @@ public class YourStoriesApp {
             filterCollection();
         } else if (newCommand.equals("select")) {
             selectBookFromCollection();
+        } else if (newCommand.equals("save")) {
+            saveBookCollection();
         } else {
             System.out.println("Invalid command. Please try again.");
         }
@@ -144,6 +161,7 @@ public class YourStoriesApp {
         System.out.println("\tsort -> sort your collection");
         System.out.println("\tfilter -> filter your collection");
         System.out.println("\tselect -> select a book from your collection");
+        System.out.println("\tsave -> save your collection");
         System.out.println("\tback -> to go back to the start of the application");
     }
 
@@ -234,6 +252,30 @@ public class YourStoriesApp {
                 System.out.println(bookCollection.selectBook(selectCommand).toString());
                 System.out.println("Success!");
             }
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads a previously saved BookCollection
+    private void loadBookCollection() {
+        try {
+            bookCollection = jsonReader.read();
+            System.out.println("Loaded " + bookCollection.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("We're sorry. Unable to read from file: " + JSON_STORE);
+        }
+
+    }
+
+    // EFFECTS: saves the BookCollection to a Json file
+    private void saveBookCollection() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(bookCollection);
+            jsonWriter.close();
+            System.out.println("Success! Saved " + bookCollection.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("We're sorry. Unable to write this to file: " + JSON_STORE);
         }
     }
 

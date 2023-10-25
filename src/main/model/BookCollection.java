@@ -1,15 +1,21 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 // represents a Book Collection having many books
-public class BookCollection {
+public class BookCollection implements Writable {
+    private String name;
     private List<Book> books;
 
     // constructs an empty book collection
-    public BookCollection() {
+    public BookCollection(String name) {
+        this.name = name;
         this.books = new ArrayList<>();
     }
 
@@ -108,6 +114,10 @@ public class BookCollection {
 
     // getter methods
 
+    public String getName() {
+        return name;
+    }
+
     public int getTotalNumberOfBooks() {
         return books.size();
     }
@@ -124,6 +134,25 @@ public class BookCollection {
     // EFFECTS: checks to see if the list of books in the collection contains a specific book
     public boolean containsBook(Book book) {
         return this.books.contains(book);
+    }
+
+    // EFFECTS: returns json object
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("books", booksToJson());
+        return json; // stub
+    }
+
+    public JSONArray booksToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Book book : books) {
+            jsonArray.put(book.toJson());
+        }
+
+        return jsonArray;
     }
 
 }

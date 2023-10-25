@@ -3,7 +3,10 @@ package model;
 // represents a Book object having a title, author, number of pages,
 // genre, year book was read, and the user's rating
 
-public class Book {
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class Book implements Writable {
     private final String title;
     private final String author;
     private final int pages;
@@ -65,6 +68,18 @@ public class Book {
         String ratingAsString = Double.toString(rating);
         return "Book [Title = " + title + ", Author = " + author + ", Page Count = " + pagesAsString
                 + ", Genre = " + genre + ", Year Read = " + yearReadAsString + ", Rating = " + ratingAsString + "]";
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("title", title);
+        json.put("author", author);
+        json.put("pages", pages);
+        json.put("genre", genre);
+        json.put("year read", yearRead);
+        json.put("rating", rating);
+        return json;
     }
 
 }

@@ -14,7 +14,7 @@ class BookCollectionTest {
 
     @BeforeEach
     void runBefore() {
-        this.testBookCollection = new BookCollection();
+        this.testBookCollection = new BookCollection("Shauna's Book Collection");
         book1 = new Book("Blood Like Magic", "Liselle Sambury", 484,
                 "YA Fantasy", 2022, 4.5);
         book2 = new Book("Love and Other Words", "Christina Lauren",
@@ -29,6 +29,7 @@ class BookCollectionTest {
     void testConstructor() {
         assertEquals(0, testBookCollection.getTotalNumberOfBooks());
         assertNull(testBookCollection.getBookAtIndex(0));
+        assertEquals("Shauna's Book Collection", testBookCollection.getName());
     }
 
     @Test

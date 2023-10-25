@@ -34,3 +34,10 @@ the resulting titles after filtering
 - As a user, I want to be able to select a singular book in the collection and view the details specified
 - As a user, I want to be provided the option to save my book collection if I choose to
 - As a user, I want to be able to reload my book collection when I reopen the application
+
+## Citations
+User interface code influenced by the TellerApp: 
+https://github.students.cs.ubc.ca/CPSC210/TellerApp
+
+Data persistence code heavily influenced by the JsonSerializationDemo: 
+https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo

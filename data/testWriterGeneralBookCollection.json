@@ -1,0 +1,21 @@
+{
+    "books": [
+        {
+            "pages": 484,
+            "year read": 2022,
+            "author": "Liselle Sambury",
+            "genre": "YA Fantasy",
+            "rating": 4.5,
+            "title": "Blood Like Magic"
+        },
+        {
+            "pages": 501,
+            "year read": 2022,
+            "author": "Tracy Deonn",
+            "genre": "YA Fantasy",
+            "rating": 5,
+            "title": "Legendborn"
+        }
+    ],
+    "name": "Shauna's Book Collection"
+}
