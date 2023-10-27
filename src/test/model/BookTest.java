@@ -10,6 +10,7 @@ public class BookTest {
     private Book testBook2;
     private Book testBook3;
     private Book testBook4;
+    private BookCollection testBookCollection;
 
     @BeforeEach
     void runBefore() {
@@ -21,6 +22,7 @@ public class BookTest {
                 "Fantasy", 2026, 3.0);
         testBook4 = new Book("Legendborn", "Tracy Deonn", 501,
                 "YA Fantasy", 2022, 5.0);
+        testBookCollection = new BookCollection("Shauna's Book Collection");
     }
 
     @Test
@@ -54,5 +56,21 @@ public class BookTest {
         assertFalse(testBook.equals(testBook4));
         assertFalse(testBook2.equals(testBook4));
         assertFalse(testBook3.equals(testBook4));
+    }
+
+    @Test
+    void testBookEqualityNull() {
+        assertFalse(testBook.equals(null));
+    }
+
+    @Test
+    void testHashCode() {
+        assertFalse(testBook.hashCode() == testBook4.hashCode());
+        assertTrue(testBook.hashCode() == testBook2.hashCode());
+    }
+
+    @Test
+    void testNotSameClass() {
+        assertFalse(testBook.equals(testBookCollection));
     }
 }

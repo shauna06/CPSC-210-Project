@@ -93,6 +93,24 @@ class BookCollectionTest {
     }
 
     @Test
+    void testDeleteBookIncorrectAuthor() {
+        testBookCollection.addBook(book1);
+        testBookCollection.deleteBook("Blood Like Magic", "Shauna Ndoping");
+        assertEquals(1, testBookCollection.getTotalNumberOfBooks());
+        boolean success = testBookCollection.containsBook(book1);
+        assertTrue(success);
+    }
+
+    @Test
+    void testDeleteBookIncorrectTitle() {
+        testBookCollection.addBook(book1);
+        testBookCollection.deleteBook("Blood Magic", "Liselle Sambury");
+        assertEquals(1, testBookCollection.getTotalNumberOfBooks());
+        boolean success = testBookCollection.containsBook(book1);
+        assertTrue(success);
+    }
+
+    @Test
     void testListAllBookTitles() {
         testBookCollection.addBook(book1);
         testBookCollection.addBook(book2);
@@ -187,6 +205,17 @@ class BookCollectionTest {
     @Test
     void testSelectBookNotInCollection () {
         assertNull(testBookCollection.selectBook("Legendborn", "Tracy Deonn"));
+    }
+
+    @Test
+    void testSelectBookIncorrectAuthor() {
+        testBookCollection.addBook(book3);
+        assertNull(testBookCollection.selectBook("Legendborn", "Shauna Ndoping"));
+    }
+
+    @Test
+    void testSelectBookIncorrectTitle() {
+        assertNull(testBookCollection.selectBook("Legends", "Tracy Deonn"));
     }
 
 }

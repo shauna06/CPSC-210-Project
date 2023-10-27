@@ -21,10 +21,6 @@ public class BookCollection implements Writable {
 
     // MODIFIES: this
     // EFFECTS: adds a book to the book collection
-    // might need to override equals and hashcode because the contains is comparing 2 objects
-    // when we make a new book that's the same, it's still thinking because it's a different object, they're
-    // different books, so it thinks the collection doesn't have that book
-    // OVERRIDE EQUALS AND HASHCODE IN BOOK CLASS
     public void addBook(Book book) {
         if (!books.contains(book)) {
             this.books.add(book);
@@ -51,11 +47,6 @@ public class BookCollection implements Writable {
         return titles;
     }
 
-    // MODIFIES: this
-    // EFFECTS: lists all the books in the collection
-    public List<Book> listAllBooks() {
-        return books;
-    }
 
     // MODIFIES: this
     // EFFECTS: sorts book collection from the highest rating to the lowest rating and returns the titles
