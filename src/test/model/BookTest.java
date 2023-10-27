@@ -75,6 +75,12 @@ public class BookTest {
         assertTrue(testBook.hashCode() == testBook2.hashCode());
         assertFalse(testBook4.hashCode() == testBook5.hashCode());
         assertFalse(testBook5.hashCode() == testBook6.hashCode());
+        assertTrue(testBook.hashCode() == testBook3.hashCode());
+        assertTrue(testBook2.hashCode() == testBook3.hashCode());
+        assertFalse(testBook.hashCode() == testBookCollection.hashCode());
+        assertNotEquals(testBook4.hashCode(), testBook5.hashCode());
+        assertEquals(testBook.hashCode(), testBook3.hashCode());
+        assertNotEquals(testBook4.hashCode(), testBookCollection.hashCode());
 
     }
 
