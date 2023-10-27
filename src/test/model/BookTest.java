@@ -3,15 +3,24 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BookTest {
     private Book testBook;
+    private Book testBook2;
+    private Book testBook3;
+    private Book testBook4;
 
     @BeforeEach
     void runBefore() {
         testBook = new Book("Blood Like Magic", "Liselle Sambury", 484,
                 "YA Fantasy", 2022, 4.5);
+        testBook2 = new Book("Blood Like Magic", "Liselle Sambury", 484,
+                "YA Fantasy", 2022, 4.5);
+        testBook3 = new Book("Blood Like Magic", "Liselle Sambury", 500,
+                "Fantasy", 2026, 3.0);
+        testBook4 = new Book("Legendborn", "Tracy Deonn", 501,
+                "YA Fantasy", 2022, 5.0);
     }
 
     @Test
@@ -35,5 +44,15 @@ public class BookTest {
         assertEquals("Book [Title = " + "Blood Like Magic" + ", Author = " + "Liselle Sambury"
                         + ", Page Count = " + "484" + ", Genre = " + "YA Fantasy" + ", Year Read = " + "2022"
                         + ", Rating = " + "4.5" + "]", testBook.toString());
+    }
+
+    @Test
+    void testBookEquality() {
+        assertTrue(testBook.equals(testBook2));
+        assertTrue(testBook.equals(testBook3));
+        assertTrue(testBook2.equals(testBook3));
+        assertFalse(testBook.equals(testBook4));
+        assertFalse(testBook2.equals(testBook4));
+        assertFalse(testBook3.equals(testBook4));
     }
 }

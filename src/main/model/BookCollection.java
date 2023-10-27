@@ -21,6 +21,10 @@ public class BookCollection implements Writable {
 
     // MODIFIES: this
     // EFFECTS: adds a book to the book collection
+    // might need to override equals and hashcode because the contains is comparing 2 objects
+    // when we make a new book that's the same, it's still thinking because it's a different object, they're
+    // different books, so it thinks the collection doesn't have that book
+    // OVERRIDE EQUALS AND HASHCODE IN BOOK CLASS
     public void addBook(Book book) {
         if (!books.contains(book)) {
             this.books.add(book);
@@ -29,9 +33,9 @@ public class BookCollection implements Writable {
 
     // MODIFIES: this
     // EFFECTS: deletes a specific book from the book collection
-    public void deleteBook(String title) {
+    public void deleteBook(String title, String author) {
         for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).getTitle().equals(title)) {
+            if (books.get(i).getTitle().equals(title) && books.get(i).getAuthor().equals(author)) {
                 books.remove(books.get(i));
             }
         }
@@ -39,12 +43,18 @@ public class BookCollection implements Writable {
 
     // MODIFIES: this
     // EFFECTS: shows the titles of all the books currently in the book collection
-    public List<String> listAllBooks() {
+    public List<String> listAllBookTitles() {
         List<String> titles = new ArrayList<>();
         for (Book book : books) {
             titles.add(book.getTitle());
         }
         return titles;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: lists all the books in the collection
+    public List<Book> listAllBooks() {
+        return books;
     }
 
     // MODIFIES: this
@@ -102,9 +112,10 @@ public class BookCollection implements Writable {
 
     // EFFECTS: returns the book a user is looking for if it is in their book collection,
     // otherwise returns null
-    public Book selectBook(String title) {
+    public Book selectBook(String title, String author) {
         for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).getTitle().equals(title)) {
+            if (books.get(i).getTitle().equals(title)
+                    && books.get(i).getAuthor().equals(author)) {
                 return books.get(i);
             }
         }

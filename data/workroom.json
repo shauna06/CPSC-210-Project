@@ -1,14 +1,6 @@
 {
     "books": [
         {
-            "pages": 360,
-            "year read": 2023,
-            "author": "Leigh Bardugo",
-            "genre": "YA Fantasy",
-            "rating": 3.5,
-            "title": "Shadow and Bone"
-        },
-        {
             "pages": 501,
             "year read": 2022,
             "author": "Tracy Deonn",

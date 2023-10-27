@@ -6,6 +6,8 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
+import java.util.Objects;
+
 public class Book implements Writable {
     private final String title;
     private final String author;
@@ -82,4 +84,27 @@ public class Book implements Writable {
         return json;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Book book = (Book) o;
+
+        if (!Objects.equals(title, book.title)) {
+            return false;
+        }
+        return Objects.equals(author, book.author);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = title != null ? title.hashCode() : 0;
+        result = 31 * result + (author != null ? author.hashCode() : 0);
+        return result;
+    }
 }

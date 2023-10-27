@@ -57,7 +57,7 @@ public class JsonWriterTest extends JsonTest {
             JsonReader reader = new JsonReader("./data/testWriterGeneralBookCollection.json");
             bc = reader.read();
             assertEquals("Shauna's Book Collection", bc.getName());
-            assertEquals(2, bc.listAllBooks().size());
+            assertEquals(2, bc.listAllBookTitles().size());
             checkBook("Blood Like Magic", "Liselle Sambury",
                     484, "YA Fantasy", 2022, 4.5, bc.getBookAtIndex(0));
             checkBook("Legendborn", "Tracy Deonn", 501,

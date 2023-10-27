@@ -102,9 +102,13 @@ public class YourStoriesApp {
 
         Book book = new Book(title, author, pages, genre, yearRead, rating);
         System.out.println("Book has successfully been made!");
-        System.out.println("Adding the book to your collection...");
-        bookCollection.addBook(book);
-        System.out.println("Successfully added book!");
+        if (bookCollection.containsBook(book)) {
+            System.out.println("The book you want to add is already in your collection.");
+        } else {
+            bookCollection.addBook(book);
+            System.out.println("Adding the book to your collection...");
+            System.out.println("Successfully added book!");
+        }
 
     }
 
@@ -169,12 +173,20 @@ public class YourStoriesApp {
     // EFFECTS: allows user to delete a book from their collection
     private void deleteFromCollection() {
         System.out.println("Type the title of the book you want to delete.");
-        String deleteCommand = input.next();
+        String deleteTitleCommand = input.next();
+        System.out.println("Type the author of the book you want to delete.");
+        String deleteAuthorCommand = input.next();
+        int size = bookCollection.getTotalNumberOfBooks();
         System.out.println("Deleting book from collection...");
-        if (bookCollection.listAllBooks().contains(deleteCommand)) {
-            bookCollection.deleteBook(deleteCommand);
-            System.out.println("Success!");
-        } else {
+        for (int i = 0; i < bookCollection.getTotalNumberOfBooks(); i++) {
+            if (bookCollection.getBookAtIndex(i).getTitle().equals(deleteTitleCommand)
+                    && bookCollection.getBookAtIndex(i).getAuthor().equals(deleteAuthorCommand)) {
+                bookCollection.deleteBook(deleteTitleCommand, deleteAuthorCommand);
+                System.out.println("Success!");
+            }
+        }
+        int newSize = bookCollection.getTotalNumberOfBooks();
+        if (newSize == size) {
             System.out.println("We're sorry. The book you want to delete seems to not be in the collection.");
         }
     }
@@ -183,7 +195,7 @@ public class YourStoriesApp {
     // EFFECTS: prints list of titles of books in user's collection
     private void listCollection() {
         System.out.println("Printing all titles in your collection...");
-        System.out.println(bookCollection.listAllBooks());
+        System.out.println(bookCollection.listAllBookTitles());
         System.out.println("Success!");
     }
 
@@ -232,28 +244,36 @@ public class YourStoriesApp {
     // and change the rating of their book if they choose to do so
     private void selectBookFromCollection() {
         System.out.println("Type the title of the book you want to select.");
-        String selectCommand = input.next();
+        String selectTitleCommand = input.next();
+        System.out.println("Type the author of the book you want to select");
+        String selectAuthorCommand = input.next();
         System.out.println("Selecting book...");
 
-        if (bookCollection.selectBook(selectCommand) == null) {
+        if (bookCollection.selectBook(selectTitleCommand, selectAuthorCommand) == null) {
             System.out.println("We're sorry. The title you've input seems to not be in the collection.");
         } else {
-            System.out.println(bookCollection.selectBook(selectCommand).toString());
+            System.out.println(bookCollection.selectBook(selectTitleCommand, selectAuthorCommand).toString());
             System.out.println("Success!");
-            System.out.println("Type c if you would like to change the rating of the book."
-                    + " Click any another key to exit.");
-            String changeRatingCommand = input.next();
-            changeRatingCommand = changeRatingCommand.toLowerCase();
-            if (changeRatingCommand.equals("c")) {
-                System.out.println("Type the new rating.");
-                double ratingCommand = input.nextDouble();
-                System.out.println("Changing rating...");
-                bookCollection.selectBook(selectCommand).changeRating(ratingCommand);
-                System.out.println(bookCollection.selectBook(selectCommand).toString());
-                System.out.println("Success!");
-            }
+            changeRatingOfBook(selectTitleCommand, selectAuthorCommand);
         }
     }
+
+    // EFFECTS: allows user to change the rating of a book
+    private void changeRatingOfBook(String selectTitleCommand, String selectAuthorCommand) {
+        System.out.println("Type c if you would like to change the rating of the book."
+                + " Click any another key to exit.");
+        String changeRatingCommand = input.next();
+        changeRatingCommand = changeRatingCommand.toLowerCase();
+        if (changeRatingCommand.equals("c")) {
+            System.out.println("Type the new rating.");
+            double ratingCommand = input.nextDouble();
+            System.out.println("Changing rating...");
+            bookCollection.selectBook(selectTitleCommand, selectAuthorCommand).changeRating(ratingCommand);
+            System.out.println(bookCollection.selectBook(selectTitleCommand, selectAuthorCommand).toString());
+            System.out.println("Success!");
+        }
+    }
+
 
     // MODIFIES: this
     // EFFECTS: loads a previously saved BookCollection

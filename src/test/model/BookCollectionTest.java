@@ -63,7 +63,7 @@ class BookCollectionTest {
     void testDeleteOneBook() {
         testBookCollection.addBook(book1);
         testBookCollection.addBook(book2);
-        testBookCollection.deleteBook("Love and Other Words");
+        testBookCollection.deleteBook("Love and Other Words", "Christina Lauren");
         assertEquals(1, testBookCollection.getTotalNumberOfBooks());
         boolean success = testBookCollection.containsBook(book2);
         assertFalse(success);
@@ -73,8 +73,8 @@ class BookCollectionTest {
     void testDeleteMultipleBooks() {
         testBookCollection.addBook(book1);
         testBookCollection.addBook(book2);
-        testBookCollection.deleteBook("Love and Other Words");
-        testBookCollection.deleteBook("Blood Like Magic");
+        testBookCollection.deleteBook("Love and Other Words", "Christina Lauren");
+        testBookCollection.deleteBook("Blood Like Magic", "Liselle Sambury");
         assertEquals(0, testBookCollection.getTotalNumberOfBooks());
         boolean success = testBookCollection.containsBook(book2);
         assertFalse(success);
@@ -85,29 +85,24 @@ class BookCollectionTest {
     @Test
     void testDeleteBookBookAlreadyDeleted() {
         testBookCollection.addBook(book1);
-        testBookCollection.deleteBook("Blood Like Magic");
-        testBookCollection.deleteBook("Blood Like Magic");
+        testBookCollection.deleteBook("Blood Like Magic", "Liselle Sambury");
+        testBookCollection.deleteBook("Blood Like Magic", "Liselle Sambury");
         assertEquals(0, testBookCollection.getTotalNumberOfBooks());
         boolean success = testBookCollection.containsBook(book1);
         assertFalse(success);
     }
 
     @Test
-    void testListAllBooks() {
+    void testListAllBookTitles() {
         testBookCollection.addBook(book1);
         testBookCollection.addBook(book2);
         testBookCollection.addBook(book3);
         testBookCollection.addBook(book4);
         assertEquals(4, testBookCollection.getTotalNumberOfBooks());
-        assertEquals("Blood Like Magic", testBookCollection.listAllBooks().get(0));
-        assertEquals("Love and Other Words", testBookCollection.listAllBooks().get(1));
-        assertEquals("Legendborn", testBookCollection.listAllBooks().get(2));
-        assertEquals("Bloodmarked", testBookCollection.listAllBooks().get(3));
-    }
-
-    @Test
-    void testListAllBooksNoBooksAdded() {
-        assertEquals(0, testBookCollection.getTotalNumberOfBooks());
+        assertEquals("Blood Like Magic", testBookCollection.listAllBookTitles().get(0));
+        assertEquals("Love and Other Words", testBookCollection.listAllBookTitles().get(1));
+        assertEquals("Legendborn", testBookCollection.listAllBookTitles().get(2));
+        assertEquals("Bloodmarked", testBookCollection.listAllBookTitles().get(3));
     }
 
     @Test
@@ -175,7 +170,8 @@ class BookCollectionTest {
         testBookCollection.addBook(book2);
         testBookCollection.addBook(book3);
         testBookCollection.addBook(book4);
-        assertEquals(book3, testBookCollection.selectBook("Legendborn"));
+        assertEquals(book3, testBookCollection.selectBook("Legendborn",
+                "Tracy Deonn"));
     }
 
     @Test
@@ -184,13 +180,13 @@ class BookCollectionTest {
         testBookCollection.addBook(book2);
         testBookCollection.addBook(book3);
         testBookCollection.addBook(book4);
-        assertEquals(book4, testBookCollection.selectBook("Bloodmarked"));
-        assertEquals(book1, testBookCollection.selectBook("Blood Like Magic"));
+        assertEquals(book4, testBookCollection.selectBook("Bloodmarked", "Tracy Deonn"));
+        assertEquals(book1, testBookCollection.selectBook("Blood Like Magic", "Liselle Sambury"));
     }
 
     @Test
     void testSelectBookNotInCollection () {
-        assertNull(testBookCollection.selectBook("Legendborn"));
+        assertNull(testBookCollection.selectBook("Legendborn", "Tracy Deonn"));
     }
 
 }
