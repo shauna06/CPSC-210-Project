@@ -12,6 +12,10 @@ public class BookTest {
     private Book testBook4;
     private Book testBook5;
     private Book testBook6;
+    private Book testBook7;
+    private Book testBook8;
+    private Book testBook9;
+    private Book testBook10;
     private BookCollection testBookCollection;
 
     @BeforeEach
@@ -27,6 +31,14 @@ public class BookTest {
         testBook5 = new Book("Legendborn", "Shauna Ndoping", 501, "YA Fantasy",
                 2022, 5.0);
         testBook6 = new Book("Legends", "Shauna Ndoping", 501, "YA Fantasy",
+                2022, 5.0);
+        testBook7 = new Book(null, "Shauna Ndoping", 501, "YA Fantasy",
+                2022, 5.0);
+        testBook8 = new Book("Legends", null, 501, "YA Fantasy",
+                2022, 5.0);
+        testBook9 = new Book(null, null, 501, "YA Fantasy",
+                2022, 5.0);
+        testBook10 = new Book(null, null, 501, "YA Fantasy",
                 2022, 5.0);
         testBookCollection = new BookCollection("Shauna's Book Collection");
     }
@@ -71,16 +83,17 @@ public class BookTest {
 
     @Test
     void testHashCode() {
-        assertFalse(testBook.hashCode() == testBook4.hashCode());
-        assertTrue(testBook.hashCode() == testBook2.hashCode());
-        assertFalse(testBook4.hashCode() == testBook5.hashCode());
-        assertFalse(testBook5.hashCode() == testBook6.hashCode());
-        assertTrue(testBook.hashCode() == testBook3.hashCode());
-        assertTrue(testBook2.hashCode() == testBook3.hashCode());
-        assertFalse(testBook.hashCode() == testBookCollection.hashCode());
+        assertNotEquals(testBook.hashCode(), testBook4.hashCode());
+        assertEquals(testBook.hashCode(), testBook2.hashCode());
         assertNotEquals(testBook4.hashCode(), testBook5.hashCode());
+        assertNotEquals(testBook5.hashCode(),testBook6.hashCode());
         assertEquals(testBook.hashCode(), testBook3.hashCode());
-        assertNotEquals(testBook4.hashCode(), testBookCollection.hashCode());
+        assertEquals(testBook2.hashCode(), testBook3.hashCode());
+        assertNotEquals(testBook.hashCode(), testBookCollection.hashCode());
+        assertNotEquals(testBook6.hashCode(), testBook7.hashCode());
+        assertNotEquals(testBook6.hashCode(), testBook8.hashCode());
+        assertNotEquals(testBook8.hashCode(), testBook9.hashCode());
+        assertEquals(testBook9.hashCode(), testBook10.hashCode());
 
     }
 
