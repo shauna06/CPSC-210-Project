@@ -34,6 +34,14 @@ the resulting titles after filtering
 - As a user, I want to be able to select a singular book in the collection and view the details specified
 - As a user, I want to be provided the option to save my book collection if I choose to
 - As a user, I want to be able to reload my book collection when I reopen the application
+- As a user, I want to be able to add a book to my collection in the Graphical User Interface
+and click a button to display my entire book collection
+- As a user, I want to be provided the option to save/reload my book collection by clicking on a button in the GUI
+- *want to add a graphing part related to page counts. perhaps pages read per genre. 
+pages read in the year vs other years. satisfies visual component*
+
+## Instructions for Grader
+
 
 ## Citations
 User interface code influenced by the TellerApp: 

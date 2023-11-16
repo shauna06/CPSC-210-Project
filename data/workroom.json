@@ -23,6 +23,14 @@
             "genre": "Autobiography",
             "rating": 5,
             "title": "Shauna's Memoir"
+        },
+        {
+            "pages": 700,
+            "year read": 2023,
+            "author": "Shauna Ndoping",
+            "genre": "Autobiography",
+            "rating": 5,
+            "title": "Shauna's Life"
         }
     ],
     "name": "Shauna's Book Collection"
