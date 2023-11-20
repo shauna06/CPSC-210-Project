@@ -2,6 +2,9 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.border.EmptyBorder;
 
 public class GraphicalMain extends JFrame {
     private static final int WIDTH = 600;
@@ -20,6 +23,8 @@ public class GraphicalMain extends JFrame {
         super("YourStories Console");
         setSize(WIDTH, HEIGHT);
         panel = new JPanel();
+//        panel.setLayout(new GridLayout(2, 1));
+        // use maybe panel.boxLayout or something of that sort
         add(panel);
         loadDisplayItems();
         // will need some way to check if the user clicks one of the buttons and code what will happen
@@ -38,6 +43,14 @@ public class GraphicalMain extends JFrame {
         panel.add(reloadCollectionButton);
         createBookButton.setLocation(300,190);
         reloadCollectionButton.setLocation(300, 210);
+        createBookButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CreateBookPage createBook = new CreateBookPage();
+                createBook.show();
+                dispose();
+            }
+        });
         panel.setBackground(new java.awt.Color(191, 170, 159));
     }
 
