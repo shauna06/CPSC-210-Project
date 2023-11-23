@@ -7,14 +7,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ListBookPage extends JFrame implements ActionListener {
+public class ListBookPage extends JFrame {
     private JLabel listOfBooks;
     private BookCollection bookCollection;
     private JPanel panel;
 
+    // sets size of and colour of new page and sets the bookCollection parameter
     public ListBookPage(BookCollection bookCollection) {
         super("List Book Page");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(600, 400));
         this.bookCollection = bookCollection;
         panel = new JPanel();
@@ -35,8 +35,4 @@ public class ListBookPage extends JFrame implements ActionListener {
         listOfBooks.setFont(new Font("Times New Roman", Font.BOLD, 20));
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 }

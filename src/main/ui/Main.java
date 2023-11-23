@@ -1,6 +1,5 @@
 package ui;
 
-import javax.swing.*;
 import java.io.FileNotFoundException;
 
 public class Main {

@@ -22,16 +22,17 @@ public class CreateBookPage extends JFrame implements ActionListener {
     private JLabel label5;
     private JLabel label6;
     private JButton button;
-    private JButton backButton;
     private JButton listBooksButton;
+    private JButton sortBooksButton;
     private JPanel panel;
     private Book book;
     private ImageIcon image;
     private BookCollection bookCollection;
 
+    // sets size and colour of page and instantiates a book collection
     public CreateBookPage() {
         super("Create Book Page");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        bookCollection = new BookCollection("Book Collection");
         setPreferredSize(new Dimension(600, 400));
         panel = new JPanel();
         setActionCommands();
@@ -61,9 +62,6 @@ public class CreateBookPage extends JFrame implements ActionListener {
         button = createButtons("Save All Text Fields");
         button.setActionCommand("Button");
         button.addActionListener(this);
-        backButton = createButtons("Back to Main Menu");
-        backButton.setActionCommand("BackButton");
-        backButton.addActionListener(this);
         listBooksButton = createButtons("List books");
         listBooksButton.setActionCommand("ListButton");
         listBooksButton.addActionListener(this);
@@ -113,27 +111,25 @@ public class CreateBookPage extends JFrame implements ActionListener {
         panel.add(ratingField);
         panel.add(button);
         panel.add(listBooksButton);
-        panel.add(backButton);
         add(panel, BorderLayout.CENTER);
     }
 
 
 
+    // EFFECTS: creates book if user clicks the save all text fields button
+    // takes user to next page if they click the List All Books button
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Button")) {
             creatingBook();
         }
         if (e.getActionCommand().equals("ListButton")) {
-            new ListBookPage(bookCollection);
+            new ListBookPage(YourStoriesGraphicalApp.getBookCollection());
         }
-        if (e.getActionCommand().equals("BackButton")) {
-            // stub
-        }
-        // want to now check if all 6 buttons are checked and if they are creates a new book and gives a little image
         // what happens if user does not enter something for any of the number sections. won't it fail to run??
     }
 
+    // MODIFIES: this
     // EFFECTS: creates a new book object using text field input and adds book to the collection
     private void creatingBook() {
         String title = titleField.getText();
@@ -143,8 +139,7 @@ public class CreateBookPage extends JFrame implements ActionListener {
         int yearRead = Integer.parseInt(yearField.getText());
         double rating = Double.parseDouble(ratingField.getText());
         book = new Book(title, author, pages, genre, yearRead, rating);
-        bookCollection = new BookCollection("Book Collection");
-        bookCollection.addBook(book);
+        YourStoriesGraphicalApp.getBookCollection().addBook(book);
         displaySuccessImage();
     }
 
@@ -153,14 +148,16 @@ public class CreateBookPage extends JFrame implements ActionListener {
         // image part is not working!!
         // also ask about timer. how to have the image pop up only for let's say 3 seconds
         try {
-            image = new ImageIcon("bookCreationSuccess.png");
+            image = new ImageIcon(getClass().getResource("bookCreationSuccess.png"));
             JLabel displayImage = new JLabel(image);
-            displayImage.setSize(20, 20);
+            displayImage.setSize(1, 1);
+            // dimension size of actual image is quite big
             panel.add(displayImage);
-            panel.setVisible(true);
+            panel.repaint();
 
         } catch (Exception d) {
             System.out.println("Couldn't find Image");
         }
+        // use show message dialog thing instead and put image inside that
     }
 }

@@ -31,6 +31,14 @@
             "genre": "Autobiography",
             "rating": 5,
             "title": "Shauna's Life"
+        },
+        {
+            "pages": 434,
+            "year read": 2014,
+            "author": "Shauna Ndoping",
+            "genre": "Autobiography",
+            "rating": 3.25,
+            "title": "My Life"
         }
     ],
     "name": "Shauna's Book Collection"
