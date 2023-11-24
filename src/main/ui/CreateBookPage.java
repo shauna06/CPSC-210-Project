@@ -149,7 +149,8 @@ public class CreateBookPage extends JFrame implements ActionListener {
         displaySuccessImage();
     }
 
-    // EFFECTS: displays image telling user they've successfully created and added book to collection
+    // EFFECTS: displays message dialog with image telling user
+    // they've successfully created and added book to collection
     private void displaySuccessImage() {
         imageIcon = new ImageIcon(getClass().getResource("bookCreationSuccess.png"));
         Image image = imageIcon.getImage();

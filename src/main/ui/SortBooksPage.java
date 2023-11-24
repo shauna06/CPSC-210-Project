@@ -17,6 +17,7 @@ public class SortBooksPage extends JFrame implements ActionListener {
     private YearComparator yearComparator;
     private RatingComparator ratingComparator;
 
+    // sets size and colour of page, sets book collection, and instantiates comparators
     public SortBooksPage(BookCollection bookCollection) {
         super("Sort books page");
         yearComparator = new YearComparator();
@@ -62,6 +63,8 @@ public class SortBooksPage extends JFrame implements ActionListener {
         panel.add(ratingButton);
     }
 
+    // EFFECTS: sorts and lists books by year if yearButton was pressed
+    // sorts and lists books by rating if ratingButton was pressed
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Year")) {

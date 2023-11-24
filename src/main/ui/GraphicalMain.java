@@ -13,8 +13,4 @@ public class GraphicalMain {
 
         }
     }
-
-
-    // ASK HOW TO PUT THE BUTTONS IN THE RIGHT PLACE AS I AM CONFUSED WITH HOW TO DO IT
-    // GridBagConstraints,
 }
