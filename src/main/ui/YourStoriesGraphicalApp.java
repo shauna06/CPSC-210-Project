@@ -18,9 +18,9 @@ public class YourStoriesGraphicalApp extends JFrame implements ActionListener {
     private JButton createBookButton;
     private JButton reloadCollectionButton;
     private JButton saveCollectionButton;
-    private CreateBookPage createBookPage;
     private JsonReader jsonReader;
     private JsonWriter jsonWriter;
+    private ImageIcon imageIcon;
     private static BookCollection bookCollection = new BookCollection("Book Collection");
     private static final String JSON_STORE = "./data/workroom.json";
 
@@ -80,7 +80,7 @@ public class YourStoriesGraphicalApp extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Create")) {
-            createBookPage = new CreateBookPage();
+            new CreateBookPage();
         }
         if (e.getActionCommand().equals("Save")) {
             saveBookCollection();
@@ -93,13 +93,22 @@ public class YourStoriesGraphicalApp extends JFrame implements ActionListener {
 
     // EFFECTS: saves the reader's book collection
     private void saveBookCollection() {
+        imageIcon = new ImageIcon(getClass().getResource("bookCreationSuccess.png"));
+        Image image = imageIcon.getImage();
+        Image newImage = image.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(newImage);
         try {
             jsonWriter.open();
             jsonWriter.write(bookCollection);
             jsonWriter.close();
-            System.out.println("Success! Saved " + bookCollection.getName() + " to " + JSON_STORE);
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Successfully Saved Collection",
+                    "Success", JOptionPane.INFORMATION_MESSAGE, imageIcon);
         } catch (FileNotFoundException e) {
             System.out.println("We're sorry. Unable to write this to file: " + JSON_STORE);
+        } catch (Exception d) {
+            System.out.println("Couldn't find image.");
         }
     }
 

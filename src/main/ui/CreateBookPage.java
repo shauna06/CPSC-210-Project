@@ -26,7 +26,7 @@ public class CreateBookPage extends JFrame implements ActionListener {
     private JButton sortBooksButton;
     private JPanel panel;
     private Book book;
-    private ImageIcon image;
+    private ImageIcon imageIcon;
     private BookCollection bookCollection;
 
     // sets size and colour of page and instantiates a book collection
@@ -57,7 +57,7 @@ public class CreateBookPage extends JFrame implements ActionListener {
         return button;
     }
 
-    // EFFECTS: sets action commands  and adds action listener to buttons
+    // EFFECTS: instantiates buttons, sets action commands  and adds action listener to buttons
     public void setActionCommands() {
         button = createButtons("Save All Text Fields");
         button.setActionCommand("Button");
@@ -65,6 +65,9 @@ public class CreateBookPage extends JFrame implements ActionListener {
         listBooksButton = createButtons("List books");
         listBooksButton.setActionCommand("ListButton");
         listBooksButton.addActionListener(this);
+        sortBooksButton = createButtons("Sort books");
+        sortBooksButton.setActionCommand("Sort");
+        sortBooksButton.addActionListener(this);
     }
 
     // EFFECTS: creates and returns JLabel
@@ -111,6 +114,7 @@ public class CreateBookPage extends JFrame implements ActionListener {
         panel.add(ratingField);
         panel.add(button);
         panel.add(listBooksButton);
+        panel.add(sortBooksButton);
         add(panel, BorderLayout.CENTER);
     }
 
@@ -126,7 +130,9 @@ public class CreateBookPage extends JFrame implements ActionListener {
         if (e.getActionCommand().equals("ListButton")) {
             new ListBookPage(YourStoriesGraphicalApp.getBookCollection());
         }
-        // what happens if user does not enter something for any of the number sections. won't it fail to run??
+        if (e.getActionCommand().equals("Sort")) {
+            new SortBooksPage(YourStoriesGraphicalApp.getBookCollection());
+        }
     }
 
     // MODIFIES: this
@@ -145,19 +151,18 @@ public class CreateBookPage extends JFrame implements ActionListener {
 
     // EFFECTS: displays image telling user they've successfully created and added book to collection
     private void displaySuccessImage() {
-        // image part is not working!!
-        // also ask about timer. how to have the image pop up only for let's say 3 seconds
+        imageIcon = new ImageIcon(getClass().getResource("bookCreationSuccess.png"));
+        Image image = imageIcon.getImage();
+        Image newImage = image.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(newImage);
         try {
-            image = new ImageIcon(getClass().getResource("bookCreationSuccess.png"));
-            JLabel displayImage = new JLabel(image);
-            displayImage.setSize(1, 1);
-            // dimension size of actual image is quite big
-            panel.add(displayImage);
-            panel.repaint();
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Successfully Added Book!",
+                    "Success", JOptionPane.INFORMATION_MESSAGE, imageIcon);
 
         } catch (Exception d) {
-            System.out.println("Couldn't find Image");
+            System.out.println("Couldn't find image");
         }
-        // use show message dialog thing instead and put image inside that
     }
 }
