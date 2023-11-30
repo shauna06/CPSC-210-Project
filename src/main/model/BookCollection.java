@@ -24,6 +24,8 @@ public class BookCollection implements Writable {
     public void addBook(Book book) {
         if (!books.contains(book)) {
             this.books.add(book);
+            EventLog.getInstance().logEvent(new Event("New book "
+                    + book.toString() + " added to collection"));
         }
     }
 
@@ -44,6 +46,7 @@ public class BookCollection implements Writable {
         for (Book book : books) {
             titles.add(book.getTitle());
         }
+        EventLog.getInstance().logEvent(new Event("Displayed all titles in collection."));
         return titles;
     }
 
@@ -58,6 +61,7 @@ public class BookCollection implements Writable {
         for (Book book : books) {
             sortedBooksRating.add(book.getTitle());
         }
+        EventLog.getInstance().logEvent(new Event("Sorted book collection by rating."));
         return sortedBooksRating;
     }
 
@@ -71,6 +75,7 @@ public class BookCollection implements Writable {
         for (Book book : books) {
             sortedBooks.add(book.getTitle());
         }
+        EventLog.getInstance().logEvent(new Event("Sorted book collection by year read."));
         return sortedBooks;
     }
 

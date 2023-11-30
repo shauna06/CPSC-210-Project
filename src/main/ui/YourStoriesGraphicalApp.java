@@ -4,12 +4,22 @@ import model.BookCollection;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+
+import model.EventLog;
+import model.Event;
 import persistence.JsonReader;
 import persistence.JsonWriter;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+/**
+ * This class consists of the main components of the opening page for the graphical user interface of the yourStories
+ * application. It sets the size of the main page, colours, and other display features such as a button to add a new
+ * Book object, a button to reload a previously saved collection, and a button to save a made collection. The main page
+ * takes the user to secondary pages depending on the action selected by the user
+ */
 
 public class YourStoriesGraphicalApp extends JFrame implements ActionListener {
     private static final int WIDTH = 600;
@@ -30,6 +40,7 @@ public class YourStoriesGraphicalApp extends JFrame implements ActionListener {
 
     // runs the YourStories graphical application, sets size of window and colours, instantiates JSON Reader
     // and JSON Writer
+    // prints EventLog when the user closes the window
     public YourStoriesGraphicalApp() throws FileNotFoundException {
         super("YourStories Console");
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -39,10 +50,21 @@ public class YourStoriesGraphicalApp extends JFrame implements ActionListener {
 //        panel.setLayout(new GridLayout(2, 1));
         add(panel, BorderLayout.CENTER);
         loadDisplayItems();
-        // will need some way to check if the user clicks one of the buttons and code what will happen
-//        setBackground(new java.awt.Color(191, 170, 159));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                printLog(EventLog.getInstance());
+            }
+        });
         setVisible(true);
+    }
+
+    // EFFECTS: prints the date logged and description for each event in EventLog
+    private void printLog(EventLog el) {
+        for (Event next : el) {
+            System.out.println(next.toString());
+        }
     }
 
     // EFFECTS: displays the buttons user's can interact with and adds action listeners to each button
@@ -123,5 +145,7 @@ public class YourStoriesGraphicalApp extends JFrame implements ActionListener {
             System.out.println("We're sorry. Unable to read from file: " + JSON_STORE);
         }
     }
+    // BorderLayout.NORTH
+    //BoxLayout.Y_AXIS
 
 }

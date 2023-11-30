@@ -62,6 +62,49 @@ button
 - You can reload the state of my application by running the Graphical Main class and clicking the "Reload Collection"
 button. Upon clicking, the application will list the books you reloaded
 
+## Phase 4
+***Phase 4: Task 2***
+
+Loaded Book Collection from ./data/workroom.json
+
+Wed Nov 29 16:35:51 PST 2023
+Displayed all titles in collection.
+
+Wed Nov 29 16:36:17 PST 2023
+New book Book [Title = Legendborn, Author = Tracy Deon, Page Count = 501, Genre = YA Fantasy, 
+Year Read = 2022, Rating = 5.0] added to collection
+
+Wed Nov 29 16:36:20 PST 2023
+Displayed all titles in collection.
+
+Wed Nov 29 16:36:56 PST 2023
+New book Book [Title = Blood Like Magic, Author = Liselle Sambury, Page Count = 482, Genre = YA Fantasy, 
+Year Read = 2022, Rating = 4.5] added to collection
+
+Wed Nov 29 16:36:59 PST 2023
+Displayed all titles in collection.
+
+Wed Nov 29 16:37:41 PST 2023
+New book Book [Title = Percy Jackson: The Lightning Thief, Author = Rick Riordan, Page Count = 300, 
+Genre = Middle Grade, Year Read = 2015, Rating = 4.0] added to collection
+
+Wed Nov 29 16:37:43 PST 2023
+Displayed all titles in collection.
+
+Wed Nov 29 16:37:48 PST 2023
+Sorted book collection by year read
+
+Wed Nov 29 16:37:48 PST 2023
+Displayed all titles in collection.
+
+Wed Nov 29 16:37:50 PST 2023
+Sorted book collection by rating.
+
+Wed Nov 29 16:37:50 PST 2023
+Displayed all titles in collection.
+
+Process finished with exit code 0
+
 ## Citations
 User interface code influenced by the TellerApp: 
 https://github.students.cs.ubc.ca/CPSC210/TellerApp

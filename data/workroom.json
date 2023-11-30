@@ -1,4 +1,29 @@
 {
-    "books": [],
+    "books": [
+        {
+            "pages": 501,
+            "year read": 2022,
+            "author": "Tracy Deonn",
+            "genre": "YA Fantasy",
+            "rating": 5,
+            "title": "Legendborn"
+        },
+        {
+            "pages": 482,
+            "year read": 2022,
+            "author": "Liselle Sambury",
+            "genre": "YA Fantasy",
+            "rating": 4.5,
+            "title": "Blood Like Magic"
+        },
+        {
+            "pages": 300,
+            "year read": 2015,
+            "author": "Rick Riordan",
+            "genre": "Middle Grade",
+            "rating": 4,
+            "title": "Percy Jackson: The Lightning Thief"
+        }
+    ],
     "name": "Book Collection"
 }
