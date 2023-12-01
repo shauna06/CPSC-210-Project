@@ -1,7 +1,6 @@
 package ui;
 
 import model.Book;
-import model.BookCollection;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,12 +26,10 @@ public class CreateBookPage extends JFrame implements ActionListener {
     private JPanel panel;
     private Book book;
     private ImageIcon imageIcon;
-    private BookCollection bookCollection;
 
-    // sets size and colour of page and instantiates a book collection
+    // sets size and colour of page
     public CreateBookPage() {
         super("Create Book Page");
-        bookCollection = new BookCollection("Book Collection");
         setPreferredSize(new Dimension(600, 400));
         panel = new JPanel();
         setActionCommands();

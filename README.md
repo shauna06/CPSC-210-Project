@@ -105,6 +105,25 @@ Displayed all titles in collection.
 
 Process finished with exit code 0
 
+***Phase 4: Task 3***
+
+One thing that I think might be helpful when considering the design of this project is to potentially implement a proper
+Singleton pattern. I didn't run into any problems in the console version of the code, but for the GUI, every time I made
+a new page that the user would go to, then I'd exit that page but then want to add a new book, a new BookCollection
+object would be made which wasn't what I wanted. At the time of coding, I didn't know what the Singleton pattern was,
+but a TA helped me instantiate a static object in the YourStoriesGraphicalApp class so that my BookCollection would
+remain even as I closed pages to go back to the main page, but then moved to another page or reopened that same page
+I closed. However, in my BookCollection class, the constructor is public, which I realize is not what we want for the
+Singleton pattern as it means another class can call and instantiate the book. So perhaps, in the future, instead of 
+instantiating a static BookCollection in the YourStoriesGraphicalApp, I do it right in the BookCollection class, with a
+private constructor, and all of my code will have to get an Instance of that BookCollection. I'd have to try it to see
+if it would work they way I want it to across the console and GUI, but that's a potential refactoring idea.
+
+With more time, I would also change the subpages such as CreateBookPage, SortBooksPage, and ListBookPage in the GUI to
+JPanels, and then hide buttons from the main page (YourStoriesGraphicalApp) while the user interacts with the JPanel.
+It's more complex as I'd need to consider how a user would go back to the main page, but it's something I'd want
+to continue working on even after this course has completed.
+
 ## Citations
 User interface code influenced by the TellerApp: 
 https://github.students.cs.ubc.ca/CPSC210/TellerApp
@@ -115,3 +134,6 @@ https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 GUI code heavily influenced by the Stack Overflow sample code:
 https://stackoverflow.com/questions/6578205/swing-jlabel-text-change-on-the-running-application
 https://stackoverflow.com/questions/6714045/how-to-resize-jlabel-imageicon
+
+Event and EventLog features obtained from the AlarmSystem repository:
+https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
